@@ -12,9 +12,9 @@ public class ParkingDto {
 
     private UUID id;
 
-    private List<Company> company;
+    private CompanyDto company;
 
-    private List<Vehicle> vehicle;
+    private VehicleDto vehicle;
 
     private LocalDateTime checkIn;
 
@@ -23,7 +23,7 @@ public class ParkingDto {
     public ParkingDto() {
     }
 
-    public ParkingDto(UUID id, List<Company> company, List<Vehicle> vehicle, LocalDateTime checkIn, LocalDateTime checkOut) {
+    public ParkingDto(UUID id, CompanyDto company, VehicleDto vehicle, LocalDateTime checkIn, LocalDateTime checkOut) {
         this.id = id;
         this.company = company;
         this.vehicle = vehicle;
@@ -39,19 +39,19 @@ public class ParkingDto {
         this.id = id;
     }
 
-    public List<Company> getCompany() {
+    public CompanyDto getCompany() {
         return company;
     }
 
-    public void setCompany(List<Company> company) {
+    public void setCompany(CompanyDto company) {
         this.company = company;
     }
 
-    public List<Vehicle> getVehicle() {
+    public VehicleDto getVehicle() {
         return vehicle;
     }
 
-    public void setVehicle(List<Vehicle> vehicle) {
+    public void setVehicle(VehicleDto vehicle) {
         this.vehicle = vehicle;
     }
 

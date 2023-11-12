@@ -16,16 +16,16 @@ public class Parking {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @OneToOne
+    @ManyToOne
     private Company company;
 
-    @OneToOne
+    @ManyToOne
     private Vehicle vehicle;
 
-    @Column(name = "check_in", nullable = false)
+    @Column(name = "check_in")
     private LocalDateTime checkIn;
 
-    @Column(name = "check_out", nullable = false)
+    @Column(name = "check_out")
     private LocalDateTime checkOut;
 
     @CreationTimestamp
@@ -39,14 +39,11 @@ public class Parking {
     public Parking() {
     }
 
-    public Parking(UUID id, Company company, Vehicle vehicle, LocalDateTime checkIn, LocalDateTime checkOut, LocalDateTime createdAt, LocalDateTime updatedAt) {
-        this.id = id;
+    public Parking(Company company, Vehicle vehicle, LocalDateTime checkIn, LocalDateTime checkOut) {
         this.company = company;
         this.vehicle = vehicle;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
     }
 
     public UUID getId() {

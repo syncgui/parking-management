@@ -7,10 +7,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-import syncgui.parkingmanagement.exceptions.ExceptionResponse;
-import syncgui.parkingmanagement.exceptions.InvalidJwtAuthenticationException;
-import syncgui.parkingmanagement.exceptions.RequiredObjectIsNullException;
-import syncgui.parkingmanagement.exceptions.ResourceNotFoundException;
+import syncgui.parkingmanagement.exceptions.*;
 
 import java.util.Date;
 
@@ -39,8 +36,8 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
         return new ResponseEntity<>(exceptionResponse, HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(RequiredObjectIsNullException.class)
-    public final ResponseEntity<ExceptionResponse> handleRequiredObjectIsNullException(Exception ex, WebRequest request) {
+    @ExceptionHandler({RequiredObjectIsNullException.class, NoParkingSpacesException.class})
+    public final ResponseEntity<ExceptionResponse> handleRequiredObjectIsNullAndNoParkingSpacesException(Exception ex, WebRequest request) {
         ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
 
         return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);

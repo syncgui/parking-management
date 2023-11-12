@@ -63,6 +63,7 @@ public class SecurityConfig {
                                 .requestMatchers("/users").denyAll()
                                 .requestMatchers("/company/**").authenticated()
                                 .requestMatchers("/vehicle/**").authenticated()
+                                .requestMatchers("/parking/**").authenticated()
                 )
                 .apply(new JwtConfigurer(tokenProvider))
                 .and()
